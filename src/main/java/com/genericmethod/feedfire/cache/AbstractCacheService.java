@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author cfarrugia
  */
-public abstract class AbstractCacheService<T extends  CacheableObject> {
+public abstract class AbstractCacheService<T extends CacheableObject> {
 
     private static Logger log = Logger.getLogger(AbstractCacheService.class);
 

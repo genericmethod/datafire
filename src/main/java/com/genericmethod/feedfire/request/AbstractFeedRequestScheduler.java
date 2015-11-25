@@ -56,7 +56,7 @@ public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
     /***
      * Return the {@link AbstractEventNotifier } to be used to generate events.
      */
-    public abstract AbstractEventNotifier<T> getNotifier();
+    public abstract AbstractEventNotifier getNotifier();
 
     /**
      * Fixed delay (in milliseconds) used by task scheduler.
@@ -75,7 +75,6 @@ public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
 
         Runnable task = new Runnable() {
 
-            @Override
             public void run() {
 
                 try {

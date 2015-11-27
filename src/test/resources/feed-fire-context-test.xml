@@ -26,7 +26,6 @@
         <property name="enableHeartBeat" value="false" />
     </bean>
 
-    <!-- task scheduler to group event details -->
     <bean id="taskScheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
         <property name="poolSize" value="20" />
         <property name="waitForTasksToCompleteOnShutdown" value="true" />
@@ -35,6 +34,5 @@
         </property>
     </bean>
 
-    <!-- used to support @Async and other task scheduling annotation -->
     <task:annotation-driven/>
 </beans>

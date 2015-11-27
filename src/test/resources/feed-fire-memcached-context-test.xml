@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean name="sampleCache" class="com.google.code.ssm.spring.SSMCache">
+        <constructor-arg name="cache" index="0" ref="sampleCacheFactory"/>
+        <constructor-arg name="expiration" index="1" value="80000"/>
+        <constructor-arg name="allowClear" index="2" value="false"/>
+    </bean>
+
+    <bean name="sampleCacheFactory" class="com.google.code.ssm.CacheFactory">
+        <property name="cacheName" value="sampleCache"/>
+        <property name="cacheClientFactory" ref="cacheClientFactory"/>
+        <property name="addressProvider" ref="sampleAddressProvider"/>
+        <property name="configuration" ref="xmemcachedConfig"/>
+        <property name="initializeTranscoders" value="false"/>
+    </bean>
+
+
+    <bean name="sampleAddressProvider" class="com.google.code.ssm.config.DefaultAddressProvider">
+        <property name="address" value="localhost:11211"/>
+    </bean>
+
+</beans>

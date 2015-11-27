@@ -1,6 +1,7 @@
 package com.genericmethod.feedfire.mapper;
 
 import com.genericmethod.feedfire.cache.CacheableObject;
+import com.genericmethod.feedfire.exception.FeedFireException;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  *
  * @author cfarrugia
  */
-public abstract class AbstractXmlFeedMapper<T extends CacheableObject> {
+public abstract class AbstractXmlFeedMapper<T> {
 
     /**
      * Return a generic model object containing data mapped from the xml feed.
@@ -17,6 +18,6 @@ public abstract class AbstractXmlFeedMapper<T extends CacheableObject> {
      * @return A generic model object T containing the xml feed data.
      * @throws Exception
      */
-    public abstract List<T> mapXmlToModel(String feedXml) throws Exception;
+    public abstract List<T> mapXmlToModel(String feedXml) throws FeedFireException;
 
 }

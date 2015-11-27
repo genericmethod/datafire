@@ -21,13 +21,8 @@ public abstract class AbstractFeedRequester implements FeedRequester {
 
     private static Logger log = Logger.getLogger(AbstractFeedRequester.class);
 
-    @Autowired private RestTemplate restTemplate;
-    @Autowired private DefaultHttpClient httpClient;
-
     @PostConstruct
     public void afterPropertiesSet() throws Exception {
-        httpClient.addResponseInterceptor(new GzipResponseInterceptor());
-        httpClient.addRequestInterceptor(new GzipRequestInterceptor());
     }
 
     /**
@@ -47,6 +42,8 @@ public abstract class AbstractFeedRequester implements FeedRequester {
      * @throws Exception
      */
     public String requestAndGet() throws Exception {
+
+        RestTemplate restTemplate = new RestTemplate();
 
         int retry = 0;
         String xmlFeed = null;

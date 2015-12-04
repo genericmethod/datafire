@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class SampleEventProducer extends AbstractEventProducer<Sample> {
+public class SampleEventProducer extends AbstractEventProducer<SampleXml> {
 
     @Override
-    public void sendEvent(Event<Sample> event) {
+    public void sendEvent(Event<SampleXml> event) {
         //do something
         //call a service
         //send on a message queue

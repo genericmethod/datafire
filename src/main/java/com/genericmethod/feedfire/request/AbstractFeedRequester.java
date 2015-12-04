@@ -2,6 +2,7 @@ package com.genericmethod.feedfire.request;
 
 import com.genericmethod.feedfire.http.interceptor.GzipRequestInterceptor;
 import com.genericmethod.feedfire.http.interceptor.GzipResponseInterceptor;
+
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
@@ -21,7 +22,8 @@ public abstract class AbstractFeedRequester implements FeedRequester {
 
     private static Logger log = Logger.getLogger(AbstractFeedRequester.class);
 
-    @Autowired private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
     @Autowired private DefaultHttpClient httpClient;
 
     @PostConstruct

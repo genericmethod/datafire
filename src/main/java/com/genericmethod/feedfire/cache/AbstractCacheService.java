@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author cfarrugia
  */
-public abstract class AbstractCacheService<T extends CacheableObject> {
+public abstract class AbstractCacheService<T extends CacheableObject> implements CacheService<T> {
 
     private static Logger log = Logger.getLogger(AbstractCacheService.class);
 
@@ -120,7 +120,7 @@ public abstract class AbstractCacheService<T extends CacheableObject> {
         return cachedObj;
     }
 
-    public KeyIteratorImpl getAllCacheKeys() {
+    private KeyIteratorImpl getAllCacheKeys() {
 
         KeyIteratorImpl keyIterator = null;
 

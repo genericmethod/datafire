@@ -16,7 +16,6 @@ import javax.annotation.PostConstruct;
  * Requests and downloads an xml feed.
  * If request fails, retries a number of times specified by getMaximumRetry()
  *
- * @author cfarrugia
  */
 public abstract class AbstractFeedRequester implements FeedRequester {
 

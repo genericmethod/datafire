@@ -1,6 +1,6 @@
 package com.genericmethod.feedfire.sample;
 
-import com.genericmethod.feedfire.cache.AbstractCacheService;
+import com.genericmethod.feedfire.cache.AbstractInMemoryCacheService;
 import com.genericmethod.feedfire.event.AbstractEventNotifier;
 import com.genericmethod.feedfire.event.AbstractEventProducer;
 import com.google.gson.Gson;
@@ -17,7 +17,7 @@ public class SampleEventNotifier extends AbstractEventNotifier<Sample> {
     @Autowired private SampleEventProducer sampleEventProducer;
 
     @Override
-    public AbstractCacheService getCacheService() {
+    public AbstractInMemoryCacheService getCacheService() {
         return sampleCacheService;
     }
 
@@ -28,6 +28,6 @@ public class SampleEventNotifier extends AbstractEventNotifier<Sample> {
 
     @Override
     public Gson getGsonInstance() {
-        return null;
+        return new Gson();
     }
 }

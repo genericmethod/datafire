@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * Handles mapping of a xml feed document (represented as a String) to a generic model object T
  *
- * @author cfarrugia
  */
 public abstract class AbstractXmlFeedMapper<T> {
 

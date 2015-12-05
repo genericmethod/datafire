@@ -23,7 +23,8 @@ public class SampleXmlFeedMapperTest {
     @Test
     public void testMapXml() throws FeedFireException {
 
-        String sampleXmlFeed = "<sampleXml>\n" +
+        String sampleXmlFeed =
+                "<sampleXml>\n" +
                 "    <sample>\n" +
                 "        <id>1</id>\n" +
                 "        <home>Team A</home>\n" +

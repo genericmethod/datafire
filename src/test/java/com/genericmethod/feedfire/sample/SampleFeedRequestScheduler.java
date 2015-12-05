@@ -1,6 +1,7 @@
 package com.genericmethod.feedfire.sample;
 
 import com.genericmethod.feedfire.cache.AbstractCacheService;
+import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.event.AbstractEventNotifier;
 import com.genericmethod.feedfire.mapper.AbstractXmlFeedMapper;
 import com.genericmethod.feedfire.request.AbstractFeedRequestScheduler;
@@ -28,7 +29,7 @@ public class SampleFeedRequestScheduler extends AbstractFeedRequestScheduler<Sam
     }
 
     @Override
-    public AbstractCacheService getCacheService() {
+    public CacheService getCacheService() {
         return sampleCacheService;
     }
 

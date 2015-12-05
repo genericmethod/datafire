@@ -2,6 +2,7 @@ package com.genericmethod.feedfire.event;
 
 import com.genericmethod.feedfire.cache.AbstractCacheService;
 import com.genericmethod.feedfire.cache.CacheKey;
+import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.cache.CacheableObject;
 import com.genericmethod.feedfire.enums.EventType;
 
@@ -22,7 +23,7 @@ public abstract class AbstractEventNotifier<T extends CacheableObject> implement
    *
    * @return Return the Cache service handling object caching.
    */
-  public abstract AbstractCacheService getCacheService();
+  public abstract CacheService getCacheService();
 
   /***
    * Return the {@link AbstractEventProducer } to be used to publish Events.

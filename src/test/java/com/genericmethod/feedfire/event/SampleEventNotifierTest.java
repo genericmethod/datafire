@@ -11,7 +11,6 @@ import com.genericmethod.feedfire.sample.SampleXml;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.verify;
 
 public class SampleEventNotifierTest {
@@ -56,7 +55,7 @@ public class SampleEventNotifierTest {
 
     assertEquals(1, sampleCacheService.getAll().size());
     assertEquals(sample, sampleCacheService.get(new CacheKey(sample.getId())));
-    verify(sampleEventProducer).sendEvent(new Event<Sample>(sample, EventType.CREATED));
+    verify(sampleEventProducer).sendEvent(new Event<>(sample, EventType.CREATED));
 
   }
 
@@ -85,19 +84,13 @@ public class SampleEventNotifierTest {
 
     assertEquals(1, sampleCacheService.getAll().size());
     assertEquals(modifiedSample, sampleCacheService.get(new CacheKey(originalSample.getId())));
-    verify(sampleEventProducer).sendEvent(new Event<Sample>(modifiedSample, EventType.UPDATED));
+    verify(sampleEventProducer).sendEvent(new Event<>(modifiedSample, EventType.UPDATED));
   }
 
   @Test
   public void testDeletedEvent() throws Exception {
 
     List<Sample> feedSamples = new ArrayList<>();
-    Sample modifiedSample = new Sample();
-    modifiedSample.setHome("Team A");
-    modifiedSample.setAway("Team B");
-    modifiedSample.setHomeTeamScore("2");
-    modifiedSample.setAwayTeamScore("2");
-    modifiedSample.setId("1");
 
     final ConcurrentHashMap<CacheKey, Sample> cacheObjects = new ConcurrentHashMap<>();
     Sample originalSample = new Sample();
@@ -110,9 +103,9 @@ public class SampleEventNotifierTest {
 
     sampleEventNotifier.updateCacheAndGenerateEvents(feedSamples, cacheObjects);
 
-    assertEquals(1, sampleCacheService.getAll().size());
-    assertEquals(modifiedSample, sampleCacheService.get(new CacheKey(originalSample.getId())));
-    verify(sampleEventProducer).sendEvent(new Event<Sample>(modifiedSample, EventType.DELETED));
+    assertEquals(0, sampleCacheService.getAll().size());
+    assertNull(sampleCacheService.get(new CacheKey(originalSample.getId())));
+    verify(sampleEventProducer).sendEvent(new Event<>(originalSample, EventType.DELETED));
 
   }
 }

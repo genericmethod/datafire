@@ -4,6 +4,8 @@
 .mtj.tmp/
 
 # Package Files #
+/.idea
+/feed-fire.iml
 *.jar
 *.war
 *.ear

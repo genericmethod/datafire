@@ -1,8 +1,8 @@
 package com.genericmethod.feedfire.request;
 
 
+import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.mapper.AbstractXmlFeedMapper;
-import com.genericmethod.feedfire.cache.AbstractCacheService;
 import com.genericmethod.feedfire.cache.CacheKey;
 import com.genericmethod.feedfire.cache.CacheableObject;
 import com.genericmethod.feedfire.event.AbstractEventNotifier;
@@ -24,7 +24,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p/>
  * The scheduled tasks requires the {feed.request.timer} property to be set.
  *
- * @author chrisf
  */
 public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
 
@@ -35,7 +34,7 @@ public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
     /**
      * Returns the FeedRequester instance used to request and retrieve the xml feed.
      *
-     * @return returns the {@link AbstractFeedRequester} instance.
+     * @return returns the {@link AbstractOkHttpFeedRequester} instance.
      */
     public abstract FeedRequester getFeedRequester();
 
@@ -51,7 +50,7 @@ public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
      *
      * @return Return the Cache service handling generic object caching.
      */
-    public abstract AbstractCacheService getCacheService();
+    public abstract CacheService getCacheService();
 
     /***
      * Return the {@link AbstractEventNotifier } to be used to generate events.

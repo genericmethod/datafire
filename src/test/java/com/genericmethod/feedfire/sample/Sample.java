@@ -3,9 +3,6 @@ package com.genericmethod.feedfire.sample;
 import com.genericmethod.feedfire.cache.CacheableObject;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-/**
- * @author cfarrugia
- */
 public class Sample extends CacheableObject {
 
   @XStreamAlias("id")

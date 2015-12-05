@@ -20,11 +20,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * Extend this class for the ability to save and retrieve objects from the feed being parsed
  * to a specific cache location.
  *
- * @author cfarrugia
  */
-public abstract class AbstractCacheService<T extends CacheableObject> implements CacheService<T> {
+public abstract class AbstractMemcachedCacheService<T extends CacheableObject> implements CacheService<T> {
 
-    private static Logger log = Logger.getLogger(AbstractCacheService.class);
+    private static Logger log = Logger.getLogger(AbstractMemcachedCacheService.class);
 
     private Cache cache;
     private String memcachedIpAddress;

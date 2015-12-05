@@ -7,9 +7,6 @@ import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- * @author cfarrugia
- */
 @Component
 public class SampleEventNotifier extends AbstractEventNotifier<Sample> {
 

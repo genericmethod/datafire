@@ -1,6 +1,5 @@
 package com.genericmethod.feedfire.event;
 
-import com.genericmethod.feedfire.cache.AbstractCacheService;
 import com.genericmethod.feedfire.cache.CacheKey;
 import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.cache.CacheableObject;

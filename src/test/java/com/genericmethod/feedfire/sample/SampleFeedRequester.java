@@ -1,18 +1,21 @@
 package com.genericmethod.feedfire.sample;
 
-import com.genericmethod.feedfire.request.AbstractFeedRequester;
+import com.genericmethod.feedfire.request.AbstractOkHttpFeedRequester;
+import com.squareup.okhttp.HttpUrl;
+
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleFeedRequester extends AbstractFeedRequester {
+public class SampleFeedRequester extends AbstractOkHttpFeedRequester {
 
     @Override
-    public String getFeedUrl() {
-        return "http://www.samplefeed.com/sample.xml";
-    }
-
-    @Override
-    public Integer getMaximumRetry() {
-        return 3;
+    public HttpUrl getFeedUrl()  {
+        return new HttpUrl.Builder()
+                .scheme("http")
+                .host("localhost")
+                .port(8080)
+                .addPathSegment("v1")
+                .addPathSegment("feed")
+                .build();
     }
 }

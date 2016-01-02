@@ -1,10 +1,10 @@
 # Feed Fire
-A Spring/memcached based generic framework to process and publish xml data feed changes as events.
+A framework to process and publish XML data feed changes as events.
 
 # Overview
 Various companies still expose their data to third parties as XML Data feeds.
 By implementing Feed Fire, an xml data feed is constantly monitored for changes.
-Every change detected generates an event which can be sent to any consumer.
+Every change detected generates an event which can be published.
 
 # Status
 Work in Progress.

@@ -7,9 +7,10 @@ import com.squareup.okhttp.Response;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
-;
 
 import javax.annotation.PostConstruct;
+
+;
 
 /**
  * Requests and downloads an xml feed. If request fails, retries a number of times specified by

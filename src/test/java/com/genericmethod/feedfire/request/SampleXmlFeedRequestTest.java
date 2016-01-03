@@ -1,7 +1,6 @@
 package com.genericmethod.feedfire.request;
 
 
-import com.genericmethod.feedfire.exception.FeedFireException;
 import com.genericmethod.feedfire.sample.SampleFeedRequester;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.mockwebserver.MockResponse;
@@ -12,23 +11,21 @@ import org.junit.Test;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
-import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class SampleXmlFeedRequestTest {
 
-  public static final String xmlResponse = "<xml>\n" +
-          "    <element></element>\n" +
-          "    <element></element>\n" +
-          "</xml>";
+  public static final String XML_RESPONSE = "<xml>\n"
+          + "    <element></element>\n"
+          + "    <element></element>\n"
+          + "</xml>";
 
   @Spy
   SampleFeedRequester feedRequester;
 
   @Before
-  public void setup(){
+  public void setup() {
     MockitoAnnotations.initMocks(this);
   }
 
@@ -36,13 +33,13 @@ public class SampleXmlFeedRequestTest {
   public void testRequestAndGet() throws Exception {
 
     MockWebServer server = new MockWebServer();
-    server.enqueue(new MockResponse().setBody(xmlResponse));
+    server.enqueue(new MockResponse().setBody(XML_RESPONSE));
     server.start();
 
     HttpUrl baseUrl = server.url("/v1/feed/");
     when(feedRequester.getFeedUrl()).thenReturn(baseUrl);
 
-    assertEquals(xmlResponse, feedRequester.requestAndGet());
+    assertEquals(XML_RESPONSE, feedRequester.requestAndGet());
 
   }
 }

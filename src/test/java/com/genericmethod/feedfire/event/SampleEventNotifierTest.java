@@ -34,7 +34,7 @@ public class SampleEventNotifierTest {
   SampleCacheService sampleCacheService;
 
   @Before
-  public void setup(){
+  public void setup() {
     MockitoAnnotations.initMocks(this);
   }
 

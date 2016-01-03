@@ -41,13 +41,19 @@ public class Event<T> implements Serializable, Cloneable {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+
+    if (this == o) {
+      return true;
+    }
+
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
 
     Event that = (Event) o;
 
-    return Objects.equal(this.message, that.message) &&
-            Objects.equal(this.status, that.status);
+    return Objects.equal(this.message, that.message)
+            && Objects.equal(this.status, that.status);
   }
 
   @Override

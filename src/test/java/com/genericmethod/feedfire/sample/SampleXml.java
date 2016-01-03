@@ -8,14 +8,14 @@ import java.util.List;
 
 @XStreamAlias("sampleXml")
 public class SampleXml {
-    @XStreamImplicit(itemFieldName = "sample")
-    List<Sample> samples;
+  @XStreamImplicit(itemFieldName = "sample")
+  List<Sample> samples;
 
-    public List<Sample> getSamples() {
-        return samples;
-    }
+  public List<Sample> getSamples() {
+    return samples;
+  }
 
-    public void setSamples(List<Sample> samples) {
-        this.samples = samples;
-    }
+  public void setSamples(List<Sample> samples) {
+    this.samples = samples;
+  }
 }

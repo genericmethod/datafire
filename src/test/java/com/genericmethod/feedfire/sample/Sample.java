@@ -64,16 +64,22 @@ public class Sample extends CacheableObject {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+
+    if (this == o) {
+      return true;
+    }
+
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
 
     Sample that = (Sample) o;
 
-    return com.google.common.base.Objects.equal(this.id, that.id) &&
-            com.google.common.base.Objects.equal(this.home, that.home) &&
-            com.google.common.base.Objects.equal(this.away, that.away) &&
-            com.google.common.base.Objects.equal(this.homeTeamScore, that.homeTeamScore) &&
-            com.google.common.base.Objects.equal(this.awayTeamScore, that.awayTeamScore);
+    return com.google.common.base.Objects.equal(this.id, that.id)
+            && com.google.common.base.Objects.equal(this.home, that.home)
+            && com.google.common.base.Objects.equal(this.away, that.away)
+            && com.google.common.base.Objects.equal(this.homeTeamScore, that.homeTeamScore)
+            && com.google.common.base.Objects.equal(this.awayTeamScore, that.awayTeamScore);
   }
 
   @Override

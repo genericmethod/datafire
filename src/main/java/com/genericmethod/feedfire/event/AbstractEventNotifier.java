@@ -1,11 +1,11 @@
 package com.genericmethod.feedfire.event;
 
+import com.google.gson.Gson;
+
 import com.genericmethod.feedfire.cache.CacheKey;
 import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.cache.CacheableObject;
 import com.genericmethod.feedfire.enums.EventType;
-
-import com.google.gson.Gson;
 
 import org.apache.log4j.Logger;
 
@@ -35,7 +35,6 @@ public abstract class AbstractEventNotifier<T extends CacheableObject> implement
   public abstract Gson getGsonInstance();
 
 
-
   /***
    * Compare the objects that have been returned from the feed to the objects that are currently in
    * cache. Update cache and generate the required events.
@@ -45,11 +44,13 @@ public abstract class AbstractEventNotifier<T extends CacheableObject> implement
    */
   public void updateCacheAndGenerateEvents(List<T> feedObjects, ConcurrentHashMap<CacheKey, T> cachedObjects) {
 
-    if (feedObjects == null)
+    if (feedObjects == null) {
       return;
+    }
 
-    if (cachedObjects == null)
+    if (cachedObjects == null) {
       return;
+    }
 
     Iterator<T> feedObjectsIterator = feedObjects.iterator();
 

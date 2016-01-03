@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/genericmethod/feed-fire.svg?branch=master)](https://travis-ci.org/genericmethod/feed-fire)
+[![Coverage Status](https://coveralls.io/repos/genericmethod/feed-fire/badge.svg?branch=master&service=github)](https://coveralls.io/github/genericmethod/feed-fire?branch=master)
 
 # Feed Fire
 A framework to process and publish XML data feed changes as events.

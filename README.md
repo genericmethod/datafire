@@ -31,6 +31,10 @@ Given the following XML data
  </matches>
 ```
 
+* When the away team score for match with id 1 changes an Updated Event is generated.
+* When a new match is added, a Created Event is generated.
+* When a match disappears from the feed, a Deleted Event is generated.
+
 # Status
 Work in Progress.
 

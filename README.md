@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/genericmethod/feed-fire/badge.svg?branch=master&service=github)](https://coveralls.io/github/genericmethod/feed-fire?branch=master)
 
 # Feed Fire
-A framework to process and publish XML data feed changes as events.
+An event emitter for xml data feeds changes.
 
 # Overview
 Even though JSON has taken over the past years, various companies still expose their data to third parties as XML data feeds.

@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/genericmethod/feed-fire/badge.svg?branch=master&service=github)](https://coveralls.io/github/genericmethod/feed-fire?branch=master)
 
 # Feed Fire
-A n event emmitter for XML data feeds
+An event emitter for XML data feeds
 
 # Overview
 Even though JSON has taken over the past years, various companies still expose their data to third parties as XML data feeds.
@@ -10,7 +10,7 @@ By implementing Feed Fire, an XML data feed is constantly monitored for changes.
 
 # Example
 
-Given the following XML data
+Given the following football match data in XML format:
 
 ```xml
 <matches>

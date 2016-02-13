@@ -36,7 +36,7 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
    *
    * @return returns the {@link DataFireOkHttpRequester} instance.
    */
-  public abstract DataFireRequester getFeedRequester();
+  public abstract DataFireRequester getRequester();
 
   /**
    * Return the XmlFeedMapper instance that maps the is used to map the xml string to generic
@@ -44,7 +44,7 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
    *
    * @return return an {@link DataFireMapper} instance
    */
-  public abstract DataFireMapper getXmlFeedMapper();
+  public abstract DataFireMapper getMapper();
 
   /**
    * Return the Cache service handling generic object caching
@@ -80,14 +80,14 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
         try {
           log.info("Requesting feed @ [" + new DateTime() + "]");
           log.info("Fixed Delay for feed is " + getFixedDelay() + " ms");
-          String feedXml = getFeedRequester().requestAndGet();
+          String feedXml = getRequester().requestAndGet();
 
           if (StringUtils.isBlank(feedXml)) {
             log.error("Feed cannot be blank");
             return;
           }
 
-          List<T> feedModel = (List<T>) getXmlFeedMapper().mapToModel(feedXml);
+          List<T> feedModel = (List<T>) getMapper().mapToModel(feedXml);
           ConcurrentHashMap<CacheKey, T> tempObjCache = getCacheService().getAll();
           getNotifier().updateCacheAndGenerateEvents(feedModel, tempObjCache);
 

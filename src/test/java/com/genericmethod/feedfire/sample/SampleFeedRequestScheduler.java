@@ -23,12 +23,12 @@ public class SampleFeedRequestScheduler extends DataFireRequestScheduler<Sample>
   private SampleEventNotifier sampleNotifier;
 
   @Override
-  public DataFireRequester getFeedRequester() {
+  public DataFireRequester getRequester() {
     return sampleFeedRequester;
   }
 
   @Override
-  public DataFireMapper getXmlFeedMapper() {
+  public DataFireMapper getMapper() {
     return sampleXmlFeedMapper;
   }
 

@@ -3,6 +3,6 @@ package com.genericmethod.feedfire.request;
 /**
  * @author chrisf
  */
-public interface FeedRequester {
+public interface DataFireRequester {
   String requestAndGet() throws Exception;
 }

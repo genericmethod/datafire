@@ -42,7 +42,7 @@ public class SampleXmlFeedMapperTest {
                     + "    </sample>\n"
                     + "</sampleXml>";
 
-    List<Sample> samples = sampleXmlFeedMapper.mapXmlToModel(sampleXmlFeed);
+    List<Sample> samples = sampleXmlFeedMapper.mapToModel(sampleXmlFeed);
     assertEquals(2, samples.size());
   }
 

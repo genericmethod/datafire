@@ -2,16 +2,16 @@ package com.genericmethod.feedfire.sample;
 
 import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.event.AbstractEventNotifier;
-import com.genericmethod.feedfire.mapper.AbstractXmlFeedMapper;
-import com.genericmethod.feedfire.request.AbstractFeedRequestScheduler;
-import com.genericmethod.feedfire.request.FeedRequester;
+import com.genericmethod.feedfire.mapper.DataFireMapper;
+import com.genericmethod.feedfire.request.DataFireRequestScheduler;
+import com.genericmethod.feedfire.request.DataFireRequester;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class SampleFeedRequestScheduler extends AbstractFeedRequestScheduler<Sample> {
+public class SampleFeedRequestScheduler extends DataFireRequestScheduler<Sample> {
 
   @Autowired
   private SampleFeedRequester sampleFeedRequester;
@@ -23,12 +23,12 @@ public class SampleFeedRequestScheduler extends AbstractFeedRequestScheduler<Sam
   private SampleEventNotifier sampleNotifier;
 
   @Override
-  public FeedRequester getFeedRequester() {
+  public DataFireRequester getFeedRequester() {
     return sampleFeedRequester;
   }
 
   @Override
-  public AbstractXmlFeedMapper getXmlFeedMapper() {
+  public DataFireMapper getXmlFeedMapper() {
     return sampleXmlFeedMapper;
   }
 

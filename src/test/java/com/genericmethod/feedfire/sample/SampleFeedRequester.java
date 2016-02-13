@@ -1,12 +1,12 @@
 package com.genericmethod.feedfire.sample;
 
-import com.genericmethod.feedfire.request.AbstractOkHttpFeedRequester;
+import com.genericmethod.feedfire.request.DataFireOkHttpRequester;
 import com.squareup.okhttp.HttpUrl;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleFeedRequester extends AbstractOkHttpFeedRequester {
+public class SampleFeedRequester extends DataFireOkHttpRequester {
 
   @Override
   public HttpUrl getFeedUrl() {

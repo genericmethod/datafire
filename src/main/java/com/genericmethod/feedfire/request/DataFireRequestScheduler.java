@@ -5,7 +5,7 @@ import com.genericmethod.feedfire.cache.CacheKey;
 import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.cache.CacheableObject;
 import com.genericmethod.feedfire.event.AbstractEventNotifier;
-import com.genericmethod.feedfire.mapper.AbstractXmlFeedMapper;
+import com.genericmethod.feedfire.mapper.DataFireMapper;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -24,9 +24,9 @@ import javax.annotation.PostConstruct;
  * of type T and placing them in the designated cache. <p/> The scheduled tasks requires the
  * {feed.request.timer} property to be set.
  */
-public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
+public abstract class DataFireRequestScheduler<T extends CacheableObject> {
 
-  private static Logger log = Logger.getLogger(AbstractFeedRequestScheduler.class);
+  private static Logger log = Logger.getLogger(DataFireRequestScheduler.class);
 
   @Autowired
   TaskScheduler taskScheduler;
@@ -34,17 +34,17 @@ public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
   /**
    * Returns the FeedRequester instance used to request and retrieve the xml feed.
    *
-   * @return returns the {@link AbstractOkHttpFeedRequester} instance.
+   * @return returns the {@link DataFireOkHttpRequester} instance.
    */
-  public abstract FeedRequester getFeedRequester();
+  public abstract DataFireRequester getFeedRequester();
 
   /**
    * Return the XmlFeedMapper instance that maps the is used to map the xml string to generic
    * objects
    *
-   * @return return an {@link AbstractXmlFeedMapper} instance
+   * @return return an {@link DataFireMapper} instance
    */
-  public abstract AbstractXmlFeedMapper getXmlFeedMapper();
+  public abstract DataFireMapper getXmlFeedMapper();
 
   /**
    * Return the Cache service handling generic object caching
@@ -87,7 +87,7 @@ public abstract class AbstractFeedRequestScheduler<T extends CacheableObject> {
             return;
           }
 
-          List<T> feedModel = (List<T>) getXmlFeedMapper().mapXmlToModel(feedXml);
+          List<T> feedModel = (List<T>) getXmlFeedMapper().mapToModel(feedXml);
           ConcurrentHashMap<CacheKey, T> tempObjCache = getCacheService().getAll();
           getNotifier().updateCacheAndGenerateEvents(feedModel, tempObjCache);
 

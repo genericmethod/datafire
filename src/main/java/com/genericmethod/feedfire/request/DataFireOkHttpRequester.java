@@ -16,9 +16,9 @@ import javax.annotation.PostConstruct;
  * Requests and downloads an xml feed. If request fails, retries a number of times specified by
  * getMaximumRetry()
  */
-public abstract class AbstractOkHttpFeedRequester implements FeedRequester {
+public abstract class DataFireOkHttpRequester implements DataFireRequester {
 
-  private static Logger log = Logger.getLogger(AbstractOkHttpFeedRequester.class);
+  private static Logger log = Logger.getLogger(DataFireOkHttpRequester.class);
 
   @PostConstruct
   public void afterPropertiesSet() throws Exception {

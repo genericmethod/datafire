@@ -1,16 +1,16 @@
 package com.genericmethod.feedfire.sample;
 
-import com.google.gson.Gson;
-
-import com.genericmethod.feedfire.cache.AbstractInMemoryCacheService;
-import com.genericmethod.feedfire.event.AbstractEventNotifier;
-import com.genericmethod.feedfire.event.AbstractEventProducer;
-
+import com.genericmethod.feedfire.cache.DataFireInMemoryCacheService;
+import com.genericmethod.feedfire.event.DataFireEventNotifier;
+import com.genericmethod.feedfire.event.DataFireEventProducer;
+import com.genericmethod.feedfire.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class SampleEventNotifier extends AbstractEventNotifier<Sample> {
+public class SampleEventNotifier extends DataFireEventNotifier<Sample,SampleEventType> {
 
   @Autowired
   private SampleCacheService sampleCacheService;
@@ -18,17 +18,18 @@ public class SampleEventNotifier extends AbstractEventNotifier<Sample> {
   private SampleEventProducer sampleEventProducer;
 
   @Override
-  public AbstractInMemoryCacheService getCacheService() {
+  public DataFireInMemoryCacheService getCacheService() {
     return sampleCacheService;
   }
 
   @Override
-  public AbstractEventProducer getEventProducer() {
+  public DataFireEventProducer getEventProducer() {
     return sampleEventProducer;
   }
 
   @Override
-  public Gson getGsonInstance() {
-    return new Gson();
+  public List<Event<Sample, SampleEventType>> getEvent(Sample cachedObj, Sample feedObject) {
+    return null;
   }
+
 }

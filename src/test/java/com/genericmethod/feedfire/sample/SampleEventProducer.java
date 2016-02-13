@@ -1,18 +1,17 @@
 package com.genericmethod.feedfire.sample;
 
-import com.genericmethod.feedfire.event.AbstractEventProducer;
+import com.genericmethod.feedfire.event.DataFireEventProducer;
 import com.genericmethod.feedfire.event.Event;
-
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 
 @Component
-public class SampleEventProducer extends AbstractEventProducer<Sample> {
+public class SampleEventProducer extends DataFireEventProducer<Sample, SampleEventType> {
 
   @Override
-  public void sendEvent(Event<Sample> event) {
-    //do something
-    //call a service
-    //send on a message queue
+  public void sendEvent(List<Event<Sample, SampleEventType>> event) {
+
   }
 }

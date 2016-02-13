@@ -1,11 +1,10 @@
 package com.genericmethod.feedfire.sample;
 
 import com.genericmethod.feedfire.cache.CacheService;
-import com.genericmethod.feedfire.event.AbstractEventNotifier;
+import com.genericmethod.feedfire.event.DataFireEventNotifier;
 import com.genericmethod.feedfire.mapper.DataFireMapper;
 import com.genericmethod.feedfire.request.DataFireRequestScheduler;
 import com.genericmethod.feedfire.request.DataFireRequester;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +37,7 @@ public class SampleFeedRequestScheduler extends DataFireRequestScheduler<Sample>
   }
 
   @Override
-  public AbstractEventNotifier getNotifier() {
+  public DataFireEventNotifier getNotifier() {
     return sampleNotifier;
   }
 

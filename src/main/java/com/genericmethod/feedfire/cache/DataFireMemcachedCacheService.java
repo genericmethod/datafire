@@ -2,29 +2,26 @@ package com.genericmethod.feedfire.cache;
 
 import com.google.code.ssm.CacheFactory;
 import com.google.code.ssm.spring.ExtendedSSMCacheManager;
-
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.impl.KeyIteratorImpl;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 
+import javax.annotation.PostConstruct;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ConcurrentHashMap;
-
-import javax.annotation.PostConstruct;
 
 /**
  * This abstract class  handles generic operations related to caching objects from the feed. Extend
  * this class for the ability to save and retrieve objects from the feed being parsed to a specific
  * cache location.
  */
-public abstract class AbstractMemcachedCacheService<T extends CacheableObject> implements CacheService<T> {
+public abstract class DataFireMemcachedCacheService<T extends CacheableObject> implements CacheService<T> {
 
-  private static Logger log = Logger.getLogger(AbstractMemcachedCacheService.class);
+  private static Logger log = Logger.getLogger(DataFireMemcachedCacheService.class);
 
   private Cache cache;
   private String memcachedIpAddress;

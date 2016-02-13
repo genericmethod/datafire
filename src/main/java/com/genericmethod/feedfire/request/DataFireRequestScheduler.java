@@ -4,19 +4,16 @@ package com.genericmethod.feedfire.request;
 import com.genericmethod.feedfire.cache.CacheKey;
 import com.genericmethod.feedfire.cache.CacheService;
 import com.genericmethod.feedfire.cache.CacheableObject;
-import com.genericmethod.feedfire.event.AbstractEventNotifier;
+import com.genericmethod.feedfire.event.DataFireEventNotifier;
 import com.genericmethod.feedfire.mapper.DataFireMapper;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.TaskScheduler;
-
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
@@ -27,9 +24,6 @@ import javax.annotation.PostConstruct;
 public abstract class DataFireRequestScheduler<T extends CacheableObject> {
 
   private static Logger log = Logger.getLogger(DataFireRequestScheduler.class);
-
-  @Autowired
-  TaskScheduler taskScheduler;
 
   /**
    * Returns the FeedRequester instance used to request and retrieve the xml feed.
@@ -54,9 +48,9 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
   public abstract CacheService getCacheService();
 
   /***
-   * Return the {@link AbstractEventNotifier } to be used to generate events.
+   * Return the {@link DataFireEventNotifier } to be used to generate events.
    */
-  public abstract AbstractEventNotifier getNotifier();
+  public abstract DataFireEventNotifier getNotifier();
 
   /**
    * Fixed delay (in milliseconds) used by task scheduler.
@@ -71,35 +65,27 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
   /**
    * Scheduled task to request and save event details.
    */
+  @Scheduled(fixedRate = 5000)
   public void requestEventsAndSaveToCache() {
 
-    Runnable task = new Runnable() {
+    try {
+      log.info("Requesting feed @ [" + new DateTime() + "]");
+      log.info("Fixed Delay for feed is " + getFixedDelay() + " ms");
+      String feedXml = getRequester().requestAndGet();
 
-      public void run() {
-
-        try {
-          log.info("Requesting feed @ [" + new DateTime() + "]");
-          log.info("Fixed Delay for feed is " + getFixedDelay() + " ms");
-          String feedXml = getRequester().requestAndGet();
-
-          if (StringUtils.isBlank(feedXml)) {
-            log.error("Feed cannot be blank");
-            return;
-          }
-
-          List<T> feedModel = (List<T>) getMapper().mapToModel(feedXml);
-          ConcurrentHashMap<CacheKey, T> tempObjCache = getCacheService().getAll();
-          getNotifier().updateCacheAndGenerateEvents(feedModel, tempObjCache);
-
-        } catch (Throwable t) {
-          log.error("An un-expected error occurred while retrieving objects for feed @[" + new DateTime() + "]", t);
-        }
-
+      if (StringUtils.isBlank(feedXml)) {
+        log.error("Feed cannot be blank");
+        return;
       }
-    };
 
-    taskScheduler.scheduleWithFixedDelay(task, getFixedDelay());
-    log.info("Initialized scheduled task for feed with fixed delay of " + getFixedDelay() + " ms");
+      List<T> feedModel = (List<T>) getMapper().mapToModel(feedXml);
+      ConcurrentHashMap<CacheKey, T> tempObjCache = getCacheService().getAll();
+      getNotifier().updateCacheAndGenerateEvents(feedModel, tempObjCache);
+
+    } catch (Throwable t) {
+      log.error("An un-expected error occurred while retrieving objects for feed @[" + new DateTime() + "]", t);
+    }
+
   }
-
 }
+

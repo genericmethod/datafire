@@ -2,7 +2,7 @@ package com.genericmethod.feedfire.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class AbstractInMemoryCacheService<T extends CacheableObject> implements CacheService<T> {
+public class DataFireInMemoryCacheService<T extends CacheableObject> implements CacheService<T> {
 
   private ConcurrentHashMap<CacheKey, T> map = new ConcurrentHashMap<>();
 

@@ -2,25 +2,23 @@ package com.genericmethod.feedfire.event;
 
 import com.google.common.base.Objects;
 
-import com.genericmethod.feedfire.enums.EventType;
-
 import java.io.Serializable;
 
-public class Event<T> implements Serializable, Cloneable {
+public class Event<T, E> implements Serializable, Cloneable {
 
   private static final long serialVersionUID = 66944887456944553L;
+  private T message;
+  private E eventType;
 
-  public Event(T message, EventType status) {
+  public Event(T message, E status) {
     this.message = message;
-    this.status = status;
+    this.eventType = status;
   }
 
-  private T message;
-  private EventType status;
 
   @Override
   public String toString() {
-    return "Notification [notification=" + status + "]";
+    return "Notification [notification=" + eventType + "]";
   }
 
   public T getMessage() {
@@ -31,12 +29,12 @@ public class Event<T> implements Serializable, Cloneable {
     this.message = message;
   }
 
-  public EventType getStatus() {
-    return status;
+  public E getEventType() {
+    return eventType;
   }
 
-  public void setStatus(EventType status) {
-    this.status = status;
+  public void setEventType(E eventType) {
+    this.eventType = eventType;
   }
 
   @Override
@@ -53,11 +51,11 @@ public class Event<T> implements Serializable, Cloneable {
     Event that = (Event) o;
 
     return Objects.equal(this.message, that.message)
-            && Objects.equal(this.status, that.status);
+            && Objects.equal(this.eventType, that.eventType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(message, status);
+    return Objects.hashCode(message, eventType);
   }
 }

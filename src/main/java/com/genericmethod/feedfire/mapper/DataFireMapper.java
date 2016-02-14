@@ -1,6 +1,6 @@
 package com.genericmethod.feedfire.mapper;
 
-import com.genericmethod.feedfire.exception.FeedFireException;
+import com.genericmethod.feedfire.exception.DataFireException;
 
 import java.util.List;
 
@@ -15,6 +15,6 @@ public abstract class DataFireMapper<T> {
    * @param feedXml The xml feed to be mapped
    * @return A generic model object T containing the xml feed data.
    */
-  public abstract List<T> mapToModel(String feedXml) throws FeedFireException;
+  public abstract List<T> mapToModel(String feedXml) throws DataFireException;
 
 }

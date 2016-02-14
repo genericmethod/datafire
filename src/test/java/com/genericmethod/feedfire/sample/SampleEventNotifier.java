@@ -1,9 +1,9 @@
 package com.genericmethod.feedfire.sample;
 
 import com.genericmethod.feedfire.cache.DataFireInMemoryCacheService;
+import com.genericmethod.feedfire.event.DataFireEvent;
 import com.genericmethod.feedfire.event.DataFireEventNotifier;
 import com.genericmethod.feedfire.event.DataFireEventProducer;
-import com.genericmethod.feedfire.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +28,7 @@ public class SampleEventNotifier extends DataFireEventNotifier<Sample,SampleEven
   }
 
   @Override
-  public List<Event<Sample, SampleEventType>> getEvent(Sample cachedObj, Sample feedObject) {
+  public List<DataFireEvent<Sample, SampleEventType>> getEvent(Sample cachedObj, Sample feedObject) {
     return null;
   }
 

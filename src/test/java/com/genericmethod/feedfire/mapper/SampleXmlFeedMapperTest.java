@@ -1,9 +1,8 @@
 package com.genericmethod.feedfire.mapper;
 
-import com.genericmethod.feedfire.exception.FeedFireException;
+import com.genericmethod.feedfire.exception.DataFireException;
 import com.genericmethod.feedfire.sample.Sample;
 import com.genericmethod.feedfire.sample.SampleXmlFeedMapper;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class SampleXmlFeedMapperTest {
   SampleXmlFeedMapper sampleXmlFeedMapper;
 
   @Test
-  public void testMapXml() throws FeedFireException {
+  public void testMapXml() throws DataFireException {
 
     String sampleXmlFeed =
             "<sampleXml>\n"

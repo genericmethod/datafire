@@ -26,7 +26,7 @@ public abstract class DataFireEventNotifier<T extends CacheableObject, E> implem
    */
   public abstract DataFireEventProducer getEventProducer();
 
-  public abstract List<Event<T,E>> getEvent(T cachedObj, T feedObject);
+  public abstract List<DataFireEvent<T,E>> getEvent(T cachedObj, T feedObject);
 
   /***
    * Compare the objects that have been returned from the feed to the objects that are currently in
@@ -57,7 +57,7 @@ public abstract class DataFireEventNotifier<T extends CacheableObject, E> implem
       T cachedObj = cachedObjects.get(cacheKey);
       getCacheService().put(cacheKey, currentObj);
 
-      List<Event<T, E>> event = getEvent(cachedObj, currentObj);
+      List<DataFireEvent<T, E>> event = getEvent(cachedObj, currentObj);
       getEventProducer().sendEvent(event);
     }
   }

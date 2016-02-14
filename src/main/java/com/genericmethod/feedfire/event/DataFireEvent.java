@@ -4,13 +4,13 @@ import com.google.common.base.Objects;
 
 import java.io.Serializable;
 
-public class Event<T, E> implements Serializable, Cloneable {
+public class DataFireEvent<T, E> implements Serializable, Cloneable {
 
   private static final long serialVersionUID = 66944887456944553L;
   private T message;
   private E eventType;
 
-  public Event(T message, E status) {
+  public DataFireEvent(T message, E status) {
     this.message = message;
     this.eventType = status;
   }
@@ -48,7 +48,7 @@ public class Event<T, E> implements Serializable, Cloneable {
       return false;
     }
 
-    Event that = (Event) o;
+    DataFireEvent that = (DataFireEvent) o;
 
     return Objects.equal(this.message, that.message)
             && Objects.equal(this.eventType, that.eventType);

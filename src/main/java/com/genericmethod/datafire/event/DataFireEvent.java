@@ -10,6 +10,9 @@ public class DataFireEvent<T, E> implements Serializable, Cloneable {
   private T message;
   private E eventType;
 
+  public DataFireEvent() {
+  }
+
   public DataFireEvent(T message, E status) {
     this.message = message;
     this.eventType = status;

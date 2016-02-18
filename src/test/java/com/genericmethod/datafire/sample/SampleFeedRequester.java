@@ -1,6 +1,7 @@
 package com.genericmethod.datafire.sample;
 
 import com.genericmethod.datafire.request.DataFireOkHttpRequester;
+import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.HttpUrl;
 import org.springframework.stereotype.Component;
 
@@ -17,4 +18,9 @@ public class SampleFeedRequester extends DataFireOkHttpRequester {
             .addPathSegment("feed")
             .build();
   }
+
+    @Override
+    public Headers getHeaders() {
+        return new Headers.Builder().build();
+    }
 }

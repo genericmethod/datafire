@@ -41,8 +41,4 @@ public class SampleFeedRequestScheduler extends DataFireRequestScheduler<Sample>
     return sampleNotifier;
   }
 
-  @Override
-  public long getFixedDelay() {
-    return 5000;
-  }
 }

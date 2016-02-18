@@ -51,10 +51,7 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
    */
   public abstract DataFireEventNotifier getNotifier();
 
-  /**
-   * Fixed delay (in milliseconds) used by task scheduler.
-   */
-  public abstract long getFixedDelay();
+
 
   @PostConstruct
   private void init() {
@@ -67,12 +64,10 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
   public void work() {
 
     try {
-      log.info("Requesting data @ [" + new DateTime() + "]");
-      log.info("Fixed Delay for data is " + getFixedDelay() + " ms");
       String data = getRequester().requestAndGet();
 
       if (StringUtils.isBlank(data)) {
-        log.error("Feed cannot be blank");
+        log.error("Data cannot be blank");
         return;
       }
 
@@ -81,7 +76,7 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
       getNotifier().updateCacheAndGenerateEvents(dataModel, tempObjCache);
 
     } catch (Throwable t) {
-      log.error("An un-expected error occurred while retrieving objects for feed @[" + new DateTime() + "]", t);
+      log.error("An un-expected error occurred while retrieving objects @[" + new DateTime() + "]", t);
     }
 
   }

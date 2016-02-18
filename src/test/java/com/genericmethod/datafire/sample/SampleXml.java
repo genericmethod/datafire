@@ -8,7 +8,7 @@ import java.util.List;
 
 @XStreamAlias("sampleXml")
 public class SampleXml {
-  @XStreamImplicit(itemFieldName = "sample")
+  @XStreamImplicit(itemFieldName = "com/genericmethod/datafire/sample")
   List<Sample> samples;
 
   public List<Sample> getSamples() {

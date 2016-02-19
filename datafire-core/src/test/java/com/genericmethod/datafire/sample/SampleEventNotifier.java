@@ -28,7 +28,7 @@ public class SampleEventNotifier extends DataFireEventNotifier<Sample,SampleEven
   }
 
   @Override
-  public List<DataFireEvent<Sample, SampleEventType>> getEvent(Sample cachedObj, Sample feedObject) {
+  public List<DataFireEvent<Sample, SampleEventType>> getEvent(Sample cachedObj, Sample dataObject) {
     return null;
   }
 

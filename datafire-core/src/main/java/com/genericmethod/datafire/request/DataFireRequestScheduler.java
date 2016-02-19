@@ -16,24 +16,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * This abstract class handles the scheduled task of downloading and mapping an XML feed to objects
- * of type T and placing them in the designated cache. <p/> The scheduled tasks requires the
- * {feed.request.timer} property to be set.
+ * This abstract class runs a scheduled task that pulls data from the data source and maps them objects
+ * of type T and places them in the cache <p/>
  */
 public abstract class DataFireRequestScheduler<T extends CacheableObject> {
 
   private static Logger log = Logger.getLogger(DataFireRequestScheduler.class);
 
   /**
-   * Returns the FeedRequester instance used to request and retrieve the xml feed.
+   * Returns the DataFireRequester instance used to request and retrieve data from the datasource.
    *
    * @return returns the {@link DataFireOkHttpRequester} instance.
    */
   public abstract DataFireRequester getRequester();
 
   /**
-   * Return the XmlFeedMapper instance that maps the is used to map the xml string to generic
-   * objects
+   * Return the DataFireMapper instance that maps the data returned from the datasource to the equivalent pojo classes
    *
    * @return return an {@link DataFireMapper} instance
    */
@@ -51,16 +49,12 @@ public abstract class DataFireRequestScheduler<T extends CacheableObject> {
    */
   public abstract DataFireEventNotifier getNotifier();
 
-
-
   @PostConstruct
   private void init() {
     work();
   }
 
-  /**
-   * Scheduled task to request and save event details.
-   */
+
   public void work() {
 
     try {

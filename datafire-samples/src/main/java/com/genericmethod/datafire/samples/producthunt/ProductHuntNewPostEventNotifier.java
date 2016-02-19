@@ -34,12 +34,12 @@ public class ProductHuntNewPostEventNotifier extends DataFireEventNotifier<Post,
     }
 
     @Override
-    public List<DataFireEvent<Post, ProductHuntEventType>> getEvent(Post cachedObj, Post feedObject) {
+    public List<DataFireEvent<Post, ProductHuntEventType>> getEvent(Post cachedObj, Post dataObject) {
 
         List<DataFireEvent<Post, ProductHuntEventType>> events = new ArrayList<>();
 
-        if (cachedObj == null && feedObject != null){
-            events.add(new DataFireEvent<>(feedObject, ProductHuntEventType.NEW_PRODUCT_ADDED));
+        if (cachedObj == null && dataObject != null){
+            events.add(new DataFireEvent<>(dataObject, ProductHuntEventType.NEW_PRODUCT_ADDED));
         }
         return events;
     }

@@ -26,10 +26,10 @@ public abstract class DataFireEventNotifier<T extends CacheableObject, E> implem
    */
   public abstract DataFireEventProducer getEventProducer();
 
-  public abstract List<DataFireEvent<T,E>> getEvent(T cachedObj, T feedObject);
+  public abstract List<DataFireEvent<T,E>> getEvent(T cachedObj, T dataObject);
 
   /***
-   * Compare the objects that have been returned from the feed to the objects that are currently in
+   * Compare the objects that have been returned from the datasource to the objects that are currently in
    * cache. Update cache and generate the required events.
    *
    * @param currentObjects   The objects that are currently in the feed.
@@ -47,8 +47,8 @@ public abstract class DataFireEventNotifier<T extends CacheableObject, E> implem
 
     Iterator<T> currentObjectsIterator = currentObjects.iterator();
 
-    log.info(String.format("Total keys in cache: %s", cachedObjects.keySet().size()));
-    log.info(String.format("Total keys in feed: %s", currentObjects.size()));
+    log.info(String.format("Total objects in cache: %s", cachedObjects.keySet().size()));
+    log.info(String.format("Total objects retrieved from datasource: %s", currentObjects.size()));
 
     while (currentObjectsIterator.hasNext()) {
       T currentObj = currentObjectsIterator.next();

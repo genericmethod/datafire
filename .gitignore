@@ -6,6 +6,8 @@
 # Package Files #
 /.idea
 /feed-fire.iml
+/datafire-core/datafire-core.iml
+/datafire-samples/datafire-samples.iml
 *.jar
 *.war
 *.ear

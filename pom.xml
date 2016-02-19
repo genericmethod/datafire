@@ -4,7 +4,7 @@
 
     <groupId>com.genericmethod.datafire</groupId>
     <artifactId>datafire-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -159,6 +159,7 @@
                 <version>2.6.0</version>
                 <scope>test</scope>
             </dependency>
+
 
         </dependencies>
     </dependencyManagement>

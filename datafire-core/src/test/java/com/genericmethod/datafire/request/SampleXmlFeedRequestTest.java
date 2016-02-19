@@ -1,7 +1,6 @@
 package com.genericmethod.datafire.request;
 
 
-import com.genericmethod.datafire.sample.SampleFeedRequester;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;

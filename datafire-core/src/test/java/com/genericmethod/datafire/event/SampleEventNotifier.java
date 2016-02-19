@@ -1,9 +1,10 @@
-package com.genericmethod.datafire.sample;
+package com.genericmethod.datafire.event;
 
 import com.genericmethod.datafire.cache.DataFireInMemoryCacheService;
-import com.genericmethod.datafire.event.DataFireEvent;
-import com.genericmethod.datafire.event.DataFireEventNotifier;
-import com.genericmethod.datafire.event.DataFireEventProducer;
+import com.genericmethod.datafire.sample.Sample;
+import com.genericmethod.datafire.sample.SampleCacheService;
+import com.genericmethod.datafire.sample.SampleEventProducer;
+import com.genericmethod.datafire.sample.SampleEventType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

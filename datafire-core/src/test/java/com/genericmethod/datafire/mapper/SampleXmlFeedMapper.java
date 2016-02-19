@@ -1,7 +1,8 @@
-package com.genericmethod.datafire.sample;
+package com.genericmethod.datafire.mapper;
 
 import com.genericmethod.datafire.exception.DataFireException;
-import com.genericmethod.datafire.mapper.DataFireMapper;
+import com.genericmethod.datafire.sample.Sample;
+import com.genericmethod.datafire.sample.SampleXml;
 import com.thoughtworks.xstream.XStream;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;

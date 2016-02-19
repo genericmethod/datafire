@@ -2,8 +2,7 @@ package com.genericmethod.datafire.mapper;
 
 import com.genericmethod.datafire.exception.DataFireException;
 import com.genericmethod.datafire.sample.Sample;
-import com.genericmethod.datafire.sample.SampleXmlFeedMapper;
-import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,6 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/feed-fire-context-test.xml"})
 public class SampleXmlFeedMapperTest {
@@ -20,7 +20,6 @@ public class SampleXmlFeedMapperTest {
   @Autowired
   SampleXmlFeedMapper sampleXmlFeedMapper;
 
-  @Test
   public void testMapXml() throws DataFireException {
 
     String sampleXmlFeed =

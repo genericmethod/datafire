@@ -1,6 +1,5 @@
-package com.genericmethod.datafire.sample;
+package com.genericmethod.datafire.request;
 
-import com.genericmethod.datafire.request.DataFireOkHttpRequester;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.HttpUrl;
 import org.springframework.stereotype.Component;

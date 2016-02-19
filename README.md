@@ -239,7 +239,7 @@ Finally, configure the scheduling task that will poll the datasource
 
 #Version
 
-- Version 1.0.1-alpha
+- Version 1.0.2-alpha
 
 
 # Status

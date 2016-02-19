@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/genericmethod/datafire.svg?branch=master)](https://travis-ci.org/genericmethod/datafire)
 [![Coverage Status](https://coveralls.io/repos/genericmethod/feed-fire/badge.svg?branch=master&service=github)](https://coveralls.io/github/genericmethod/datafiree?branch=master)
 
-[![dsf](http://emojipedia-us.s3.amazonaws.com/cache/67/78/6778e5687df78a4ee0c2e54c759b0a4a.png)]
+[!(http://emojipedia-us.s3.amazonaws.com/cache/67/78/6778e5687df78a4ee0c2e54c759b0a4a.png)]
 
 # Data Fire
 Data Fire is a tiny framework that helps developers represent a rapidly changing datasource as events.
